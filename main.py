@@ -105,9 +105,23 @@ def loading_percent(delay_time: float = 1e-1):
         delay(delay_time)
 
 
+def spinning_slash(delay_time: float = 1e-1, iteration: int = 25, slash_count: int = 1,
+                   space: bool = False):
+    """print a spinning slash for users while loading something."""
+
+    space = " " if space else ""
+
+    for _ in range(iteration):
+
+        for char in "|/-\\":
+            print(f"\r{(char+space)*slash_count}", end="")
+            delay(delay_time)
+
+    clear()
+
 def main():
     # loading_words(main_word="Hello", delay_time=0.3)
-    loading_percent()
+    spinning_slash()
 
 
 if __name__ == "__main__":
