@@ -96,8 +96,18 @@ def loading_words(main_word: str = "loading", iteration: int = 5, delay_time: fl
             delay(delay_time)
 
 
+def loading_percent(delay_time: float = 1e-1):
+    """show loading percentage for users."""
+
+    for percent in range(1, 101):
+        percent = f"{percent}".zfill(2) + "%"
+        print(percent, end='\r')
+        delay(delay_time)
+
+
 def main():
-    loading_words(main_word="Hello", delay_time=0.3)
+    # loading_words(main_word="Hello", delay_time=0.3)
+    loading_percent()
 
 
 if __name__ == "__main__":
