@@ -52,7 +52,7 @@ def clear():
         system("cls")
 
 
-def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float = 0.3):
+def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float = 1e-1):
     """show to us a normal loading bar that use char as indicator."""
 
     # guard conditions.
@@ -75,8 +75,29 @@ def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float =
     return True
 
 
+def loading_words(main_word: str = "loading", iteration: int = 5, delay_time: float = 1e-1):
+    """show a word that changes it case in sequence order."""
+
+    for _ in range(iteration):
+
+        # convert main_word from string to list.
+        main_word_list = list(main_word)
+
+        for index, char in enumerate(main_word_list):
+            main_word_list[index] = char.upper()
+
+            if index != 0:
+                # make sure to don't use lower when the index is,
+                # zero so we don't want to lower the last char if we,
+                # on the first index.
+                main_word_list[index-1] = main_word_list[index-1].lower()
+
+            print("".join(main_word_list), end='\r')
+            delay(delay_time)
+
+
 def main():
-    loading_bar1()
+    loading_words(main_word="Hello", delay_time=0.3)
 
 
 if __name__ == "__main__":
