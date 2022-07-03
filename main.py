@@ -66,7 +66,9 @@ def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float =
     # now convert that loading_bar to list.
     loading_bar = list(loading_bar)
 
-    for index, _ in enumerate(loading_bar, 1):
+    for index, char in enumerate(loading_bar, 0):
+        if char in "[]":
+            continue
         loading_bar[index] = main_char
         print("".join(loading_bar), end='\r')
         delay(delay_time)
@@ -119,9 +121,11 @@ def spinning_slash(delay_time: float = 1e-1, iteration: int = 25, slash_count: i
 
     clear()
 
+
 def main():
     # loading_words(main_word="Hello", delay_time=0.3)
-    spinning_slash()
+    # spinning_slash()
+    loading_bar1()
 
 
 if __name__ == "__main__":
