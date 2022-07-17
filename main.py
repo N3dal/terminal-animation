@@ -67,10 +67,11 @@ def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float =
     loading_bar = list(loading_bar)
 
     for index, char in enumerate(loading_bar, 0):
+        # clear()
         if char in "[]":
             continue
         loading_bar[index] = main_char
-        print("".join(loading_bar), end='\r')
+        print(f"\r{''.join(loading_bar)}", end='')
         delay(delay_time)
 
     # return indicator for tell that the operation is done.
@@ -92,8 +93,6 @@ def loading_bar4(main_chars: str = "#", char_range: int = 50, delay_time: float 
 
     # convert loading bar to list.
     loading_bar = list(loading_bar)
-
-    
 
 
 def loading_words(main_word: str = "loading", iteration: int = 5, delay_time: float = 1e-1):
