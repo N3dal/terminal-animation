@@ -53,7 +53,7 @@ def clear():
 
 
 def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float = 1e-1):
-    """show to us a normal loading bar that use char as indicator."""
+    """show to us a normal loading bar that use any char as indicator."""
 
     # guard conditions.
 
@@ -75,6 +75,25 @@ def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float =
 
     # return indicator for tell that the operation is done.
     return True
+
+
+def loading_bar4(main_chars: str = "#", char_range: int = 50, delay_time: float = 1e-1):
+    """loading bar like windows bar:
+    # [      #######              ]
+    # and will continue forward and start from start:
+    # [                      #####]
+    # [             ########      ]
+    # [###                       #]
+    # [#####                      ]
+    """
+
+    # create an empty bar.
+    loading_bar = "[" + (" "*char_range) + "]"
+
+    # convert loading bar to list.
+    loading_bar = list(loading_bar)
+
+    
 
 
 def loading_words(main_word: str = "loading", iteration: int = 5, delay_time: float = 1e-1):
