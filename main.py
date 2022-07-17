@@ -58,7 +58,7 @@ def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float =
     # guard conditions.
 
     # first make sure that we only use one char not a whole string.
-    main_char = main_char[0]
+    fill_char = main_char[0]
 
     # first create empty bar.
     loading_bar = "[" + (" " * char_range) + "]"
@@ -70,11 +70,32 @@ def loading_bar1(main_char: str = "#", char_range: int = 50, delay_time: float =
         # clear()
         if char in "[]":
             continue
-        loading_bar[index] = main_char
+        loading_bar[index] = fill_char
         print(f"\r{''.join(loading_bar)}", end='')
         delay(delay_time)
 
     # return indicator for tell that the operation is done.
+    return True
+
+
+def loading_bar2(main_chars: str = "#=>", char_range: int = 50, delay_time: float = 1e-1):
+    """show updated bar of the loading_bar1 this uses more than one char to draw the bar."""
+
+    fill_char, moving_char = main_chars[0], main_chars[-1]
+
+    loading_bar = "[" + (fill_char * char_range) + "]"
+
+    # now convert that to list.
+    loading_bar = list(loading_bar)
+
+    for index, char in enumerate(loading_bar, 0):
+        # clear()
+        if char in "[]":
+            continue
+        loading_bar[index] = moving_char
+        print(f"\r{''.join(loading_bar)}", end='')
+        delay(delay_time)
+
     return True
 
 
@@ -143,7 +164,7 @@ def spinning_slash(delay_time: float = 1e-1, iteration: int = 25, slash_count: i
 def main():
     # loading_words(main_word="Hello", delay_time=0.3)
     # spinning_slash()
-    loading_bar1()
+    loading_bar2(main_chars="01")
 
 
 if __name__ == "__main__":
